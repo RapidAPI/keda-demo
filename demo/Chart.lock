@@ -1,0 +1,9 @@
+dependencies:
+- name: keda
+  repository: https://kedacore.github.io/charts
+  version: 2.9.1
+- name: kafka
+  repository: https://charts.bitnami.com/bitnami
+  version: 20.0.2
+digest: sha256:34382014b663bf1e169c424ef7a2c43d95ed995c8a785b6d48dbc4b11c9ce8f8
+generated: "2023-01-03T16:10:18.328203+02:00"

@@ -1,0 +1,9 @@
+kafka:
+  persistence:
+    enabled: false
+  externalAccess:
+    enabled: true
+    service:
+      type: NodePort
+      nodePorts:
+        - 30001

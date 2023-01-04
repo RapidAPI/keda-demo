@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-producer-deployment
+  labels:
+    app: kafka-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-producer
+  template:
+    metadata:
+      labels:
+        app: kafka-producer
+    spec:
+      containers:
+      - name: kafka-producer
+        image: docker.io/bitnami/kafka:3.3.1-debian-11-r25
+        command:
+        - "/bin/bash"
+        - "-c"
+        - "while true; do echo 'Hello World $RANDOM' | kafka-console-producer.sh --topic quickstart-events --bootstrap-server demo-kafka:9092; sleep 5; done;"

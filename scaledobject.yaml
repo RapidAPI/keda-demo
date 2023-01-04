@@ -1,0 +1,35 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kafka-consumer-scaled-object
+  namespace: default # must be in the same namespace as the deployment
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: kafka-consumer-deployment
+  pollingInterval:  30 # needs to be discussed
+  cooldownPeriod:   60 # needs to be discussed, after scale up or down how much time to wait
+  minReplicaCount:  1
+  maxReplicaCount:  12
+  fallback: # state to fall if the scaler is in error state                             
+    failureThreshold: 3 
+    replicas: 6   
+  advanced:
+    # this will create the hpa object
+    horizontalPodAutoscalerConfig:
+      name: kafka-consumer-hpa
+  triggers:
+  - type: kafka
+    metadata:
+      bootstrapServers: demo-kafka:9092
+      consumerGroup: demo
+      topic: 'quickstart-events'
+      lagThreshold: '1'
+      activationLagThreshold: '1'
+      offsetResetPolicy: latest
+      allowIdleConsumers: 'false'
+      scaleToZeroOnInvalidOffset: 'false'
+      excludePersistentLag: 'false'
+      version: 1.0.0
+      partitionLimitation: '1,2,10-20,31'
