@@ -20,4 +20,4 @@ spec:
         command:
         - "/bin/bash"
         - "-c"
-        - "while true; do echo 'Hello World $RANDOM' | kafka-console-producer.sh --topic quickstart-events --bootstrap-server demo-kafka:9092; sleep 5; done;"
+        - "while true; do echo 'Hello World $RANDOM' | kafka-console-producer.sh --topic demo --bootstrap-server demo-kafka:9092; sleep 5; done;"

@@ -20,4 +20,4 @@ spec:
         command:
         - "/bin/bash"
         - "-c"
-        - "kafka-console-consumer.sh --group demo --topic quickstart-events --from-beginning --bootstrap-server demo-kafka:9092"
+        - "kafka-console-consumer.sh --group demo --topic demo --from-beginning --bootstrap-server demo-kafka:9092"

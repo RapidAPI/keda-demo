@@ -10,7 +10,7 @@ spec:
     name: kafka-consumer-deployment
   pollingInterval:  30 # needs to be discussed
   cooldownPeriod:   60 # needs to be discussed, after scale up or down how much time to wait
-  minReplicaCount:  1
+  minReplicaCount:  0
   maxReplicaCount:  12
   fallback: # state to fall if the scaler is in error state                             
     failureThreshold: 3 
@@ -24,7 +24,7 @@ spec:
     metadata:
       bootstrapServers: demo-kafka:9092
       consumerGroup: demo
-      topic: 'quickstart-events'
+      topic: 'demo'
       lagThreshold: '1'
       activationLagThreshold: '1'
       offsetResetPolicy: latest
