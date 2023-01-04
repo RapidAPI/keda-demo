@@ -5,7 +5,7 @@ metadata:
   labels:
     app: kafka-consumer
 spec:
-  #replicas: 0
+  replicas: 0
   selector:
     matchLabels:
       app: kafka-consumer
